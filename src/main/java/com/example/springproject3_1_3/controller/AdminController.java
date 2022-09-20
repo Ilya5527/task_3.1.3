@@ -50,8 +50,6 @@ public class AdminController {
 
     @PatchMapping("/{id}/update")
     public String updateUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
-        System.out.println(user);
-        System.out.println(bindingResult.getAllErrors());
         if (bindingResult.hasErrors()) {
             return "admin/adminPage";
         }
@@ -66,53 +64,4 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-//
-//    @GetMapping("/showUsers")
-//    public String usersList(ModelMap modelMap) {
-//        modelMap.addAttribute("users", userService.getAllUsers());
-//        modelMap.addAttribute("roles", roleService.allRoles());
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//        modelMap.addAttribute("authUser", (User) auth.getPrincipal());
-//        return "userList";
-//    }
-//
-//    @GetMapping("/addUser")
-//    public String addUser(ModelMap model) {
-//        model.addAttribute("roles", roleService.allRoles());
-//        model.addAttribute("user", new User());
-//        return "addUser";
-//    }
-//
-//
-//    @PostMapping()
-//    public String create(@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
-//        if (bindingResult.hasErrors()) {
-//                return "addUser";
-//        }
-//        userService.addUser(user);
-//        return "redirect:/admin/showUsers";
-//    }
-//
-//    @DeleteMapping("/{id}")
-//    public String getUser(@PathVariable("id") long id) {
-//        userService.deleteUser(id);
-//        return "redirect:/admin/showUsers";
-//    }
-//
-//    @GetMapping("/{id}/updateUser")
-//    public String update(@PathVariable("id") long id, ModelMap model) {
-//        model.addAttribute("user", userService.getUserById(id));
-//        model.addAttribute("roleList", roleService.allRoles());
-//        return "updateUser";
-//    }
-//
-//
-//    @PatchMapping("/{id}")
-//    public String updateUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
-//        if (bindingResult.hasErrors()) {
-//            return "updateUser";
-//        }
-//        userService.updateUser(user);
-//        return "redirect:/admin/showUsers";
-//    }
 }
