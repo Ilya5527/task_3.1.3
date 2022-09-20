@@ -50,10 +50,12 @@ public class AdminController {
 
     @PatchMapping("/{id}/update")
     public String updateUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
+        System.out.println(user);
+        System.out.println(bindingResult.getAllErrors());
         if (bindingResult.hasErrors()) {
             return "admin/adminPage";
         }
-        System.out.println(user);
+
         userService.updateUser(user);
         return "redirect:/admin";
     }
